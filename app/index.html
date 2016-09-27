@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Angular Material - Starter App</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/app.css"/>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+          display: none !important;
+        }
+    </style>
+
+  </head>
+
+  <body ng-app="starterApp" layout="column" ng-cloak data-ng-controller="MainController as main_vm">
+
+    <ui-view></ui-view>
+
+<!--   <header layout="row">
+    <h2>Header</h2>
+  </header>
+
+  <md-content layout flex layout-align="center" layout-padding>
+    <aside flex="33">
+      <h2>Menu</h2>
+    </aside>
+    <main flex="66">
+      <h2>Main</h2>
+      <md-button class="md-primary md-raised">Click here</md-button>
+    </main>
+  </md-content>
+
+
+  <footer layout="row">
+    <h2>Footer</h2>
+  </footer> -->
+
+<!--     <md-button class="md-primary md-raised" data-ng-click="main_vm.clickMe()">Click Me</md-button>
+    <md-checkbox class="md-primary" data-ng-model="checked">
+      Is checked?
+    </md-checkbox>
+    <md-content>
+      Lorem ipsum dolor sit amet, ne quod novum mei.
+    <md-button class="md-primary md-raised" data-ng-click="main_vm.clickMe()">Click Me</md-button>
+    </md-content>
+    <md-icon md-font-set="material-icons"> face </md-icon>
+
+    <md-input-container>
+      <input type="text" name="" placeholder="Test">
+      <md-select data-ng-model="selectModel" placeholder="Select a course">
+        <md-option>Select 1</md-option>
+        <md-option>Select 2</md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-tabs>
+      <md-tab>
+        <md-tab-label>
+          <h4>School of net</h4>
+        </md-tab-label>
+        <md-tab-body>
+          <p>Test School of net text</p>
+        </md-tab-body>
+      </md-tab>
+    <md-tab>
+      <md-tab-label>
+        <h4>School of net</h4>
+      </md-tab-label>
+      <md-tab-body>
+        <p>Test School of net text</p>
+      </md-tab-body>
+    </md-tab>
+    </md-tabs>
+
+    <md-menu-bar>
+      <md-menu>
+        <md-menu-item>School of net</md-menu-item>
+        <md-menu-content>
+          <md-menu-item>Item 1</md-menu-item>
+          <md-menu-item>Item 2</md-menu-item>
+          <md-menu-item>Item 3</md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>Item 4</md-menu-item>
+          <md-menu-item>Item 5</md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-menu-bar> -->
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.js"></script>
+    <script src="../node_modules/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script type="text/javascript">
+
+          angular
+              .module('starterApp', ['ngMaterial', 'ui.router'])
+              .config(function($stateProvider, $mdThemingProvider) {
+                $stateProvider
+                  .state('main', {
+                    abstract: true,
+                    templateUrl: 'src/main/main.html'
+                  })
+                  .state('main.list', {
+                    url: '/',
+                    templateUrl: 'src/list/list.html',
+                    controller: 'ListController',
+                    controllerAs: 'list_vm'
+                  })
+                  .state('main.create', {
+                    url: '/create',
+                    templateUrl: 'src/create/create.html',
+                    controller: 'CreateController',
+                    controllerAs: 'create_vm'
+                  })
+                // // $mdThemingProvider.definePalette('myPaletter', {
+
+                // // });
+                // //
+
+                // // $mdThemingProvider.extendPalette('teal', {
+
+                // // })
+                // $mdThemingProvider
+                //   .theme('default')
+                //   .primaryPalette('teal')
+                //   .accentPalette('purple')
+                //   .warnPalette('cyan')
+              })
+              .controller('MainController', function() {
+                var vm = this;
+
+                vm.clickMe = clickMe;
+
+                function clickMe() {
+                  alert('Hello from button - SON');
+                }
+              })
+              .service('ListService', function() {
+                var data = [];
+                var service = {
+                  setData: setData,
+                  getData: getData
+                };
+
+                function setData(_data) {
+                  data = _data;
+                }
+
+                function getData() {
+                  return data;
+                }
+
+
+                return service;
+              })
+              .controller('ListController', function($mdDialog, ListService) {
+                var vm = this;
+
+                var list = [{
+                  name: 'Leonan',
+                  lastname: 'Luppi',
+                  family: 'HUHU',
+                  age: '20',
+                  telephone: '89 99654355432',
+                  email: 'leonan.hfjdhkfhs@fjkdsjfkla.com'
+                }, {
+                  name: 'Wesley',
+                  lastname: 'Willians',
+                  family: 'hadjkha',
+                  age: '34',
+                  telephone: '89 99654355432',
+                  email: 'wesley.hfjdhkfhs@fjkdsjfkla.com'
+                }, {
+                  name: 'Luiz',
+                  lastname: 'Carlo',
+                  family: 'Carlo',
+                  age: '31',
+                  telephone: '84 980432423',
+                  email: 'luiz.hfjdhkfhs@fjkdsjfkla.com'
+                }];
+
+                if (ListService.getData().length < 3) {
+                  ListService.setData(list);
+                }
+
+                vm.data = ListService.getData();
+
+                vm.showDetails = function(item) {
+                  var detail = $mdDialog.alert({
+                    title: 'Details',
+                    textContent: 'Hello ' + item.name.concat(' ').concat(item.lastname).concat(' ').concat(item.age),
+                    ok: 'Close'
+                  });
+
+                  $mdDialog
+                    .show(detail)
+                    .finally(function() {
+                      detail = undefined;
+                    });
+                }
+              })
+              .controller('CreateController', function(ListService, $state) {
+                var vm = this;
+
+                vm.create = function(form) {
+                  ListService.getData().push(form);
+
+                  $state.go('main.list');
+                };
+
+              });
+
+    </script>
+
+  </body>
+</html>

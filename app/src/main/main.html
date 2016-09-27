@@ -1,0 +1,20 @@
+<md-toolbar layout="row">
+    <h2>Dashboard</h2>
+</md-toolbar>
+
+<md-content layout="row" flex>
+    <md-sidenav flex md-is-locked-open="$mdMedia('min-width: 332px')" class="md-primary">
+        <md-list>
+            <md-list-item>
+                <a href ui-sref="main.list">List</a>
+            </md-list-item>
+            <md-list-item>
+                <a href ui-sref="main.create">Create</a>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <main flex layout-padding>
+        <ui-view></ui-view>
+    </main>
+</md-content>

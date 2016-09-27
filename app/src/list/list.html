@@ -1,0 +1,25 @@
+<md-button class="md-raised md-primary" href ui-sref="main.create">Create</md-button>
+
+<h2>Listing</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>lastname</th>
+            <th>age</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr data-ng-repeat="item in list_vm.data">
+            <td data-ng-bind="item.name"></td>
+            <td data-ng-bind="item.lastname"></td>
+            <td data-ng-bind="item.age"></td>
+            <td>
+                <md-icon md-font-set="material-icons" data-ng-click="list_vm.showDetails(item)"> face </md-icon>
+            </td>
+        </tr>
+    </tbody>
+</table>
